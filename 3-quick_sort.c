@@ -36,14 +36,19 @@ int lomuto(int *array, int low, int high, size_t size)
 		if (array[j] < ross)
 		{
 			i++;
-			swap(&array[i], &array[j]);
-			if (i != j)
+			if (array[i] != array[j])
+			{
+				swap(&array[i], &array[j]);
 				print_array(array, size);
+			}
 		}
 	}
-	swap(&array[i + 1], &array[high]);
-	if ((i + 1) != high)
+
+	if (array[i + 1] != array[high])
+	{
+		swap(&array[i + 1], &array[high]);
 		print_array(array, size);
+	}
 
 	return (i + 1);
 }
@@ -65,7 +70,6 @@ void quicksort_rec(int *array, int low, int high, size_t size)
 		i = lomuto(array, low, high, size);
 		quicksort_rec(array, low, i - 1, size);
 		quicksort_rec(array, i + 1, high, size);
-			
 	}
 }
 /**
